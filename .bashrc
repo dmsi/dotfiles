@@ -8,4 +8,6 @@
 #export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;88m\]\h\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
 export EDITOR=nvim
 
-export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;68m\]\h\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\$(gitps1)\]]\\$ \[$(tput sgr0)\]"
+export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;68m\]\h\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
+alias vi=nvim
+alias vim=nvim

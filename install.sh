@@ -58,7 +58,7 @@ function install_nvim() {
 # .bashrc .screenrc etc 
 #------------------------------------------------------------------------------
 function install_shell() {
-  cp .screenrc ~./
+  cp .screenrc ~/.
   cat .bashrc >> ~/.bashrc
 }
 

@@ -1,0 +1,15 @@
+BoldAsFont=-1
+Font=Consolas
+FontHeight=11
+FontWeight=400
+FontIsBold=no
+BackgroundColour=36,36,36
+ForegroundColour=255,255,255
+CursorType=block
+Term=xterm-256color
+Scrollbar=none
+Red=192,128,50
+Blue=90,90,90
+Magenta=128,128,0
+FontSmoothing=default
+AllowBlinking=no

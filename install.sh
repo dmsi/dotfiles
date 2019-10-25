@@ -24,7 +24,7 @@ function install_vim() {
   mkdir -p ~/.vim/swp
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   ln -s ~/dotfiles/.vimrc ~/.vimrc
-  vim +BundleInstall +qall
+  vim +BundleInstall +qall 2>&1 > /dev/null
   echo "========================================================================="
   echo " *** Vim files installed *** "
   echo "========================================================================="
@@ -48,7 +48,7 @@ function install_nvim() {
   mkdir -p ~/.config/nvim/swp
   git clone https://github.com/gmarik/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
   ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
-  nvim +BundleInstall +qall
+  nvim +BundleInstall +qall 2>&1 > /dev/null
   echo "========================================================================="
   echo " *** NeoVim files installed *** "
   echo "========================================================================="

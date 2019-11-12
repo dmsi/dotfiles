@@ -52,6 +52,7 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'rakr/vim-one'
 Plugin 'Yggdroot/indentLine'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 " To ignore plugin indent changes, use:
@@ -60,8 +61,8 @@ filetype plugin indent on
 " End Vundle
 "------------------------------------------------------------------------------
 
-colorscheme gruvbox
-set background=dark
+colorscheme one
+set background=light
 
 "indentLine
 let g:indentLine_char = '·'

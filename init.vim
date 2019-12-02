@@ -26,34 +26,35 @@ endif
 set encoding=utf-8
 
 "------------------------------------------------------------------------------
-" Vundle
+" Vim-Plug
 "------------------------------------------------------------------------------
 set nocompatible 
-filetype off     " for Vundle
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
-Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/vcscommand.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'tpope/vim-fugitive'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'sickill/vim-monokai'
-Plugin 'yuttie/inkstained-vim'
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'morhetz/gruvbox'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'rakr/vim-one'
-Plugin 'Yggdroot/indentLine'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'fatih/vim-go'
-call vundle#end()
+call plug#begin('~/.config/nvim/plugged')
+Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree',              { 'on': 'NERDTreeToggle' }
+Plug 'kien/ctrlp.vim',                   { 'on': 'CtrtP' }
+Plug 'bling/vim-airline'
+Plug 'Yggdroot/indentLine'
+
+Plug 'vim-scripts/vcscommand.vim'
+Plug 'tpope/vim-fugitive'
+
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+Plug 'fatih/vim-go',                     { 'for': 'go' }
+Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
+Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
+
+Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
+"Plug 'yuttie/inkstained-vim'
+"Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'endel/vim-github-colorscheme'
+"Plug 'lifepillar/vim-solarized8'
+"Plug 'junegunn/seoul256.vim'
+"Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
+call plug#end()
+
 filetype plugin indent on
 " To ignore plugin indent changes, use:
 "filetype plugin on

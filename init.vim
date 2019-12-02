@@ -8,6 +8,8 @@ set secure
 set ttyfast
 set lazyredraw
 
+let mapleader=","
+
 "------------------------------------------------------------------------------
 " Put backup and swap files to one place
 "------------------------------------------------------------------------------
@@ -32,7 +34,7 @@ set nocompatible
 call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree',              { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim',                   { 'on': 'CtrtP' }
 Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
@@ -58,10 +60,8 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 filetype plugin indent on
-" To ignore plugin indent changes, use:
-"filetype plugin on
 "------------------------------------------------------------------------------
-" End Vundle
+" End Vim-Plug
 "------------------------------------------------------------------------------
 
 colorscheme one
@@ -76,6 +76,23 @@ let g:indentLine_color_gui = '#d0d0d0'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+"mycpp
+nmap <Leader><Leader>f :call ShowFuncName() <CR>
+nmap <silent><Leader>of :call FindFileAndSplit('vsplit')<CR>
+nmap <silent><Leader>ot :call FindFileAndSplit('e')<CR>
+
+" ctrlp
+nnoremap <silent> <Leader>os :CtrlP<CR>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'jclass': '\v\.(class)$',
+  \ }
+
+" NerdTree
+nnoremap <silent> <Leader>oe :NERDTreeToggle<CR>
+
 
 " Disable annoying screen flashing
 set visualbell
@@ -99,7 +116,6 @@ autocmd Filetype go setlocal ts=4 sts=4 sw=4
 "au BufNewFile,BufRead *.rad,*.mat		setf yaml
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 
-let mapleader=","
 
 set expandtab
 set number     " Show  line numbers
@@ -129,7 +145,7 @@ map <Leader>2 :tabprevious<cr>
 vmap <Leader>2 <esc> :tabprevious<cr>
 
 
-" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
+" jj back to normal mode ('Control + c' works too)
 inoremap jj <Esc>
 
 "------------------------------------------------------------------------------
@@ -155,13 +171,6 @@ set complete+=t "tags
 " End auto-complete by tab
 "------------------------------------------------------------------------------
 
-nnoremap <silent> <Leader>os :CtrlP<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'jclass': '\v\.(class)$',
-  \ }
-nnoremap <silent> <Leader>oe :NERDTreeToggle<CR>
 
 " Run interpretators in the ConqueTerm depending on the filetype
 augroup CExecute 

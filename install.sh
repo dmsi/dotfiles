@@ -9,6 +9,8 @@
 #  * TODO: Add profiles for home and for work
 #------------------------------------------------------------------------------
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 
 #------------------------------------------------------------------------------
 # VIM
@@ -22,9 +24,9 @@ function install_vim() {
   mkdir -p ~/.vim/bundle
   mkdir -p ~/.vim/backup
   mkdir -p ~/.vim/swp
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  ln -s ~/dotfiles/.vimrc ~/.vimrc
-  vim +BundleInstall +qall 2>&1 > /dev/null
+  #git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  #ln -s ~/dotfiles/.vimrc ~/.vimrc
+  #vim +BundleInstall +qall 2>&1 > /dev/null
   echo "========================================================================="
   echo " *** Vim files installed *** "
   echo "========================================================================="
@@ -47,8 +49,9 @@ function install_nvim() {
   mkdir -p ~/.config/nvim/backup
   mkdir -p ~/.config/nvim/swp
   git clone https://github.com/gmarik/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-  ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
-  nvim +BundleInstall +qall 2>&1 > /dev/null
+  #ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
+  ln -s ${SCRIPTPATH}/init.vim ~/.config/nvim/init.vim
+  nvim +BundleInstall +qall
   echo "========================================================================="
   echo " *** NeoVim files installed *** "
   echo "========================================================================="

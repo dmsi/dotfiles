@@ -73,9 +73,13 @@ let g:indentLine_color_gui = '#d0d0d0'
 "let g:indentLine_color_gui = '#585858'
 
 "Airline
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_symbols.branch = '⎇'
 
 "mycpp
 nmap <Leader><Leader>f :call ShowFuncName() <CR>

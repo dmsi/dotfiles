@@ -51,12 +51,13 @@ Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
 
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
-"Plug 'yuttie/inkstained-vim'
-"Plug 'kristijanhusak/vim-hybrid-material'
-"Plug 'endel/vim-github-colorscheme'
-"Plug 'lifepillar/vim-solarized8'
-"Plug 'junegunn/seoul256.vim'
-"Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
+
+Plug 'yuttie/inkstained-vim'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'endel/vim-github-colorscheme'
+Plug 'lifepillar/vim-solarized8'
+Plug 'junegunn/seoul256.vim'
+Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
 call plug#end()
 
 filetype plugin indent on
@@ -77,6 +78,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_symbols.branch = '⎇'
@@ -116,8 +118,6 @@ autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
 "autocmd Filetype scala setlocal ts=4 sts=4 sw=4
 
-"autocmd BufRead *.mat set filetype=yaml
-"au BufNewFile,BufRead *.rad,*.mat		setf yaml
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 
 
@@ -137,16 +137,13 @@ set hlsearch   "
 " Set status line status 
 set wildmenu
 set laststatus=2
-"set statusline=%<%t\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*%=%c%V,%l\ %L\ %p%% 
 
 " Dont jump when * is pressed for the first time, just highlight all
 nnoremap * *N
 
 " Tab navigation
 map <Leader>3 :tabnext<cr>
-vmap <Leader>3 <esc>:tabnext<cr>
 map <Leader>2 :tabprevious<cr>
-vmap <Leader>2 <esc> :tabprevious<cr>
 
 
 " jj back to normal mode ('Control + c' works too)

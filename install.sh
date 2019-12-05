@@ -47,6 +47,5 @@ function install_shell() {
 #------------------------------------------------------------------------------
 # Call functions to install components
 #------------------------------------------------------------------------------
-#install_vim
 install_nvim
-#install_shell
+install_shell

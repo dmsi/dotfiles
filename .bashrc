@@ -2,16 +2,21 @@
 # begin: dotfiles --------------------------------------------------------------------
 #
 
-# For mac
-#export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]ds\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;88m\]mac\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
-
-# For dark terminal theme
-#export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;220m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]"
-
-# For light terminal theme
-#export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;88m\]\h\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
 if [ "$PS1" ]; then
-  export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]\[\033[38;5;208m\]@\[$(tput sgr0)\]\[\033[38;5;68m\]\h\[$(tput sgr0)\]|\[$(tput sgr0)\]\[\033[38;5;74m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
+  username_color="\033[38;5;10m"
+  at_color="\033[38;5;208m"
+  hostname_color="\033[38;5;88m"
+  directory_color="\033[38;5;74m"
+  bold="$(tput bold)"
+  reset="$(tput sgr0)"
+  PS1="\[${bold}\][\[${reset}\]"
+  PS1+="\[${username_color}\]\u\[${reset}\]"
+  PS1+="\[${at_color}\]@\[${reset}\]"
+  PS1+="\[${hostname_color}\]\h\[${reset}\]"
+  PS1+="\[${bold}\]|\[${reset}\]"
+  PS1+="\[${directory_color}\]\W\[${reset}\]"
+  PS1+="\[${bold}\]]\[${reset}\]\\$ "
+  export PS1
 fi
 
 export EDITOR=nvim

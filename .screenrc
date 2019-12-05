@@ -1,3 +1,7 @@
 escape ^Nn
 bind w windowlist -b
 truecolor on
+
+startup_message off
+defdynamictitle off
+

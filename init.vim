@@ -58,6 +58,7 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -65,7 +66,8 @@ filetype plugin indent on
 " End Vim-Plug
 "------------------------------------------------------------------------------
 
-colorscheme one
+colorscheme ayu
+let ayucolor="mirage"
 set background=dark
 
 "indentLine

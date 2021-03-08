@@ -43,6 +43,9 @@ function install_shell() {
   # .screenrc
   ln -sf ${SCRIPTPATH}/.screenrc ../.screenrc
 
+  # .ls_colors
+  ln -sf ${SCRIPTPATH}/.ls_colors ../.ls_colors
+
   # .bashrc
   mv ~/.bashrc ~/.bashrc.backup
   cat << EOF > ~/.bashrc

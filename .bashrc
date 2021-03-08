@@ -23,4 +23,6 @@ export EDITOR=nvim
 alias vi=nvim
 alias vim=nvim
 
+export LS_COLORS=$(cat ~/.ls_colors)
+
 # end: dotfiles --------------------------------------------------------------------

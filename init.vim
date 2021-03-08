@@ -66,12 +66,12 @@ filetype plugin indent on
 "------------------------------------------------------------------------------
 
 colorscheme one
-set background=light
+set background=dark
 
 "indentLine
 let g:indentLine_char = '·'
-let g:indentLine_color_gui = '#d0d0d0'
-"let g:indentLine_color_gui = '#585858'
+"let g:indentLine_color_gui = '#d0d0d0'
+let g:indentLine_color_gui = '#585858'
 
 "Airline
 if !exists('g:airline_symbols')

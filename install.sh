@@ -40,6 +40,7 @@ function install_nvim() {
 # .bashrc .screenrc etc 
 #------------------------------------------------------------------------------
 function install_shell() {
+  # TODO link for screenrc
   cp .screenrc ~/.
   cat .bashrc >> ~/.bashrc
 }
@@ -48,4 +49,4 @@ function install_shell() {
 # Call functions to install components
 #------------------------------------------------------------------------------
 install_nvim
-install_shell
+#install_shell

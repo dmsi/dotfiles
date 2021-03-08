@@ -5,7 +5,7 @@
 if [ "$PS1" ]; then
   username_color="\033[38;5;10m"
   at_color="\033[38;5;208m"
-  hostname_color="\033[38;5;88m"
+  hostname_color="\033[38;5;140m"
   directory_color="\033[38;5;74m"
   bold="$(tput bold)"
   reset="$(tput sgr0)"

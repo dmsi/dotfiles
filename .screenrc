@@ -5,3 +5,5 @@ truecolor on
 startup_message off
 defdynamictitle off
 
+# Mouse scroll
+termcapinfo xterm* ti@:te@

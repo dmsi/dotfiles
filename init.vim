@@ -35,7 +35,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim',                   { 'on': 'CtrtP' }
+Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
 Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
 
@@ -81,6 +81,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_symbols.branch = '⎇'

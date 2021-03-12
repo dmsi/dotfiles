@@ -34,13 +34,17 @@ set nocompatible
 call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
 Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
 
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'tpope/vim-fugitive'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'fatih/vim-go',                     { 'for': 'go' }
@@ -51,7 +55,6 @@ Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
 
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
-
 Plug 'yuttie/inkstained-vim'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'endel/vim-github-colorscheme'
@@ -86,6 +89,11 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_symbols.branch = '⎇'
 
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+
+
 "mycpp
 nmap <Leader><Leader>f :call ShowFuncName() <CR>
 nmap <silent><Leader>of :call FindFileAndSplit('vsplit')<CR>
@@ -98,10 +106,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'jclass': '\v\.(class)$',
   \ }
-
-" NerdTree
-nnoremap <silent> <Leader>oe :NERDTreeToggle<CR>
-
 
 " Disable annoying screen flashing
 set visualbell
@@ -120,6 +124,7 @@ set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
 "autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 

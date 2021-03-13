@@ -52,19 +52,19 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
-"Plug 'sheerun/vim-polyglot'
-
 " Language specific plugins, can be replaced with all-in-one vim-polyglot,
 " but there is something I dont like about it... Not sure what it is exactly.
-Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css']}
-Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
-Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
-Plug 'posva/vim-vue',                    { 'for': 'vue' }
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-Plug 'fatih/vim-go',                     { 'for': 'go' }
-Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
-Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
-Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
+Plug 'mattn/emmet-vim',         { 'for': ['html', 'css'] }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx',             { 'for': 'jsx' }
+Plug 'posva/vim-vue',           { 'for': 'vue' }
+Plug 'bfrg/vim-cpp-modern',     { 'for': 'cpp' }
+Plug 'vim-jp/vim-cpp',          { 'for': 'cpp' }
+Plug 'rhysd/vim-clang-format',  { 'for' : ['c', 'cpp'] }
+Plug 'fatih/vim-go',            { 'for': 'go' }
+Plug 'derekwyatt/vim-scala',    { 'for': 'scala' }
+Plug 'tikhomirov/vim-glsl',     { 'for': 'glsl' }
+Plug 'dmsi/mycpp.vim',          { 'for': ['c', 'cpp'] }
 
 " Themes
 Plug 'rakr/vim-one'
@@ -116,6 +116,10 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.dll$|\.exe$',
   \ 'jclass': '\v\.(class)$',
   \ }
+
+" clang format
+let g:clang_format#auto_format=1
+
 
 " Disable annoying screen flashing
 set visualbell

@@ -1,5 +1,9 @@
 syntax on
 
+" Read more
+" https://medium.com/@alexeysamoshkin/if-you-redefine-emmet-trigger-key-from-default-c-y-to-comma-in-insert-mode-wouldnt-it-mean-acb9eef59b50
+"set notimeout
+
 "read local per-directory settings
 "https://medium.com/@dnrvs/per-project-settings-in-nvim-fc8c8877d970
 set exrc
@@ -42,26 +46,33 @@ Plug 'vim-scripts/vcscommand.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
+
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+"Plug 'sheerun/vim-polyglot'
+
+" Language specific plugins, can be replaced with all-in-one vim-polyglot,
+" but there is something I dont like about it... Not sure what it is exactly.
+Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css']}
+Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
+Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
+Plug 'posva/vim-vue',                    { 'for': 'vue' }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'fatih/vim-go',                     { 'for': 'go' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
-
 Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
 
+" Themes
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
-Plug 'yuttie/inkstained-vim'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'endel/vim-github-colorscheme'
-Plug 'lifepillar/vim-solarized8'
-Plug 'junegunn/seoul256.vim'
-Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
 Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -75,7 +86,6 @@ set background=dark
 
 "indentLine
 let g:indentLine_char = '·'
-"let g:indentLine_color_gui = '#d0d0d0'
 let g:indentLine_color_gui = '#585858'
 
 "Airline
@@ -102,8 +112,8 @@ nmap <silent><Leader>ot :call FindFileAndSplit('e')<CR>
 " ctrlp
 nnoremap <silent> <Leader>os :CtrlP<CR>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.dll$|\.exe$',
   \ 'jclass': '\v\.(class)$',
   \ }
 
@@ -123,8 +133,8 @@ set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
-"autocmd Filetype scala setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
 
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 
@@ -157,6 +167,16 @@ map <Leader>2 :tabprevious<cr>
 " jj back to normal mode ('Control + c' works too)
 inoremap jj <Esc>
 
+" ctrl + p to paste 'yanked' content in edit mode
+imap <C-p> <C-r>"
+
+" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 "------------------------------------------------------------------------------
 "Auto-complete by tab
 "------------------------------------------------------------------------------
@@ -179,6 +199,10 @@ set complete+=t "tags
 "------------------------------------------------------------------------------
 " End auto-complete by tab
 "------------------------------------------------------------------------------
+
+" I would prefer emmet-vim on tab completion working with the tab completion
+" above but... This is the less painful method to remap it to something else.
+imap ,, <C-y>,
 
 
 " Run interpretators in the ConqueTerm depending on the filetype

@@ -52,19 +52,19 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
-" Language specific plugins, can be replaced with all-in-one vim-polyglot,
-" but there is something I dont like about it... Not sure what it is exactly.
-Plug 'mattn/emmet-vim',         { 'for': ['html', 'css'] }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx',             { 'for': 'jsx' }
-Plug 'posva/vim-vue',           { 'for': 'vue' }
-Plug 'bfrg/vim-cpp-modern',     { 'for': 'cpp' }
-Plug 'vim-jp/vim-cpp',          { 'for': 'cpp' }
-Plug 'rhysd/vim-clang-format',  { 'for' : ['c', 'cpp'] }
-Plug 'fatih/vim-go',            { 'for': 'go' }
-Plug 'derekwyatt/vim-scala',    { 'for': 'scala' }
-Plug 'tikhomirov/vim-glsl',     { 'for': 'glsl' }
-Plug 'dmsi/mycpp.vim',          { 'for': ['c', 'cpp'] }
+" Language specific plugins
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
+Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css'] }
+Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
+Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
+Plug 'posva/vim-vue',                    { 'for': 'vue' }
+Plug 'bfrg/vim-cpp-modern',              { 'for': 'cpp' }
+Plug 'vim-jp/vim-cpp',                   { 'for': 'cpp' }
+Plug 'rhysd/vim-clang-format',           { 'for': ['c', 'cpp'] }
+Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
+Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
+Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
 
 " Themes
 Plug 'rakr/vim-one'
@@ -73,6 +73,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'yuttie/inkstained-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -83,10 +84,15 @@ filetype plugin indent on
 colorscheme ayu
 let ayucolor="mirage"
 set background=dark
+    
 
 "indentLine
 let g:indentLine_char = '·'
-let g:indentLine_color_gui = '#585858'
+"let g:indentLine_color_gui = '#585858'
+let g:indentLine_color_gui = '#444444'
+"let g:indentLine_setColors = 0
+imap <Leader>i :IndentLinesToggle<cr>
+nmap <Leader>i :IndentLinesToggle<cr>
 
 "Airline
 if !exists('g:airline_symbols')
@@ -120,6 +126,12 @@ let g:ctrlp_custom_ignore = {
 " clang format
 let g:clang_format#auto_format=1
 
+"vim-go
+let g:go_imports_autosave = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_imports_mode = "goimports"
+
 
 " Disable annoying screen flashing
 set visualbell
@@ -137,8 +149,8 @@ set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
-autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
+"autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+"autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
 
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 

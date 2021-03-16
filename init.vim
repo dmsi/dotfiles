@@ -56,12 +56,12 @@ Plug 'prettier/vim-prettier', {
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
 Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css'] }
 Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
-Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
+"Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
 Plug 'posva/vim-vue',                    { 'for': 'vue' }
 Plug 'bfrg/vim-cpp-modern',              { 'for': 'cpp' }
 Plug 'vim-jp/vim-cpp',                   { 'for': 'cpp' }
 Plug 'rhysd/vim-clang-format',           { 'for': ['c', 'cpp'] }
-Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
 Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
@@ -91,6 +91,7 @@ let g:indentLine_char = '·'
 "let g:indentLine_color_gui = '#585858'
 let g:indentLine_color_gui = '#444444'
 "let g:indentLine_setColors = 0
+let g:indentLine_enabled = 0
 imap <Leader>i :IndentLinesToggle<cr>
 nmap <Leader>i :IndentLinesToggle<cr>
 
@@ -131,6 +132,17 @@ let g:go_imports_autosave = 1
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_imports_mode = "goimports"
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
 
 
 " Disable annoying screen flashing

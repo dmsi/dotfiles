@@ -47,6 +47,7 @@ Plug 'vim-scripts/vcscommand.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
+Plug 'jeetsukumaran/vim-buffergator'
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
@@ -74,6 +75,10 @@ Plug 'dracula/vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'yuttie/inkstained-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'mhartington/oceanic-next'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 filetype plugin indent on
@@ -230,6 +235,9 @@ set complete+=t "tags
 " above but... This is the less painful method to remap it to something else.
 "imap ,, <C-y>,
 imap <C-l> <C-y>,
+
+" Buffergator (to replace that tab workflow)
+nmap <C-b> :BuffergatorOpen<CR>
 
 
 " Run interpretators in the ConqueTerm depending on the filetype

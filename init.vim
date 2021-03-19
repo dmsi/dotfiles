@@ -54,7 +54,7 @@ Plug 'prettier/vim-prettier', {
 
 " Language specific plugins
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
-Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css'] }
+Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css', 'html.handlebars', 'vue'] }
 Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
 "Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
 Plug 'posva/vim-vue',                    { 'for': 'vue' }
@@ -88,10 +88,9 @@ set background=dark
 
 "indentLine
 let g:indentLine_char = '·'
-"let g:indentLine_color_gui = '#585858'
 let g:indentLine_color_gui = '#444444'
-"let g:indentLine_setColors = 0
 let g:indentLine_enabled = 0
+let g:vim_json_syntax_conceal = 0
 imap <Leader>i :IndentLinesToggle<cr>
 nmap <Leader>i :IndentLinesToggle<cr>
 
@@ -108,8 +107,6 @@ let g:airline_symbols.branch = '⎇'
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
-
-
 
 "mycpp
 nmap <Leader><Leader>f :call ShowFuncName() <CR>
@@ -194,6 +191,7 @@ map <Leader>2 :tabprevious<cr>
 
 " jj back to normal mode ('Control + c' works too)
 inoremap jj <Esc>
+inoremap <C-c> <Esc>
 
 " ctrl + p to paste 'yanked' content in edit mode
 imap <C-p> <C-r>"
@@ -230,7 +228,8 @@ set complete+=t "tags
 
 " I would prefer emmet-vim on tab completion working with the tab completion
 " above but... This is the less painful method to remap it to something else.
-imap ,, <C-y>,
+"imap ,, <C-y>,
+imap <C-l> <C-y>,
 
 
 " Run interpretators in the ConqueTerm depending on the filetype

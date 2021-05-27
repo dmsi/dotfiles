@@ -12,6 +12,8 @@ set secure
 set ttyfast
 set lazyredraw
 
+set cursorline
+
 let mapleader=","
 
 "------------------------------------------------------------------------------
@@ -61,7 +63,7 @@ Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
 Plug 'posva/vim-vue',                    { 'for': 'vue' }
 Plug 'bfrg/vim-cpp-modern',              { 'for': 'cpp' }
 Plug 'vim-jp/vim-cpp',                   { 'for': 'cpp' }
-Plug 'rhysd/vim-clang-format',           { 'for': ['c', 'cpp'] }
+"Plug 'rhysd/vim-clang-format',           { 'for': ['c', 'cpp'] }
 Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
@@ -86,9 +88,13 @@ filetype plugin indent on
 " End Vim-Plug
 "------------------------------------------------------------------------------
 
-colorscheme ayu
+"colorscheme one
 let ayucolor="mirage"
-set background=dark
+set background=light
+let g:one_allow_italics=1
+"colorscheme one
+colorscheme OceanicNext
+
     
 
 "indentLine
@@ -121,13 +127,13 @@ nmap <silent><Leader>ot :call FindFileAndSplit('e')<CR>
 " ctrlp
 nnoremap <silent> <Leader>os :CtrlP<CR>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|build$\|deps$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.dll$|\.exe$',
   \ 'jclass': '\v\.(class)$',
   \ }
 
 " clang format
-let g:clang_format#auto_format=1
+"let g:clang_format#auto_format=1
 
 "vim-go
 let g:go_imports_autosave = 1
@@ -163,6 +169,7 @@ set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
+"autocmd Filetype cpp setlocal ts=4 sts=4 sw=4
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 "autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
 
@@ -238,6 +245,7 @@ imap <C-l> <C-y>,
 
 " Buffergator (to replace that tab workflow)
 nmap <C-b> :BuffergatorOpen<CR>
+let g:buffergator_show_full_directory_path = 0
 
 
 " Run interpretators in the ConqueTerm depending on the filetype

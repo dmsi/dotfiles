@@ -38,7 +38,6 @@ set encoding=utf-8
 "------------------------------------------------------------------------------
 set nocompatible 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
 Plug 'bling/vim-airline'
@@ -51,9 +50,9 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'jeetsukumaran/vim-buffergator'
 
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+"Plug 'prettier/vim-prettier', {
+"  \ 'do': 'npm install',
+"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'html'] }
 
 " Language specific plugins
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
@@ -68,6 +67,7 @@ Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
 Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
+Plug 'zah/nim.vim'
 
 " Themes
 Plug 'rakr/vim-one'
@@ -81,6 +81,9 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 Plug 'lifepillar/vim-solarized8'
+Plug 'chiendo97/intellij.vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'macguirerintoul/night_owl_light.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -88,12 +91,17 @@ filetype plugin indent on
 " End Vim-Plug
 "------------------------------------------------------------------------------
 
+colorscheme night-owl
+let g:airline_theme = 'ayu'
+"colorscheme nord
+"let ayucolor="dark"
+"colorscheme ayu
+"set background=light
+"let g:one_allow_italics=1
 "colorscheme one
-let ayucolor="mirage"
-set background=light
-let g:one_allow_italics=1
-"colorscheme one
-colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold=0
+"let g:oceanic_next_terminal_italic=1
+"colorscheme OceanicNext
 
     
 

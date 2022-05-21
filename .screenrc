@@ -5,3 +5,8 @@ truecolor on
 startup_message off
 defdynamictitle off
 
+# Mouse scroll
+termcapinfo xterm* ti@:te@
+
+# Ctrl+z for vim does not clear the secreen!
+altscreen on

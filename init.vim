@@ -1,5 +1,9 @@
 syntax on
 
+" Read more
+" https://medium.com/@alexeysamoshkin/if-you-redefine-emmet-trigger-key-from-default-c-y-to-comma-in-insert-mode-wouldnt-it-mean-acb9eef59b50
+"set notimeout
+
 "read local per-directory settings
 "https://medium.com/@dnrvs/per-project-settings-in-nvim-fc8c8877d970
 set exrc
@@ -7,6 +11,8 @@ set secure
 
 set ttyfast
 set lazyredraw
+
+set cursorline
 
 let mapleader=","
 
@@ -32,32 +38,52 @@ set encoding=utf-8
 "------------------------------------------------------------------------------
 set nocompatible 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'vim-scripts/Conque-GDB',           { 'for': ['c', 'cpp'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim',                   { 'on': 'CtrtP' }
+Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
 Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
 
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'tpope/vim-fugitive'
 
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-Plug 'fatih/vim-go',                     { 'for': 'go' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
+Plug 'jeetsukumaran/vim-buffergator'
+
+"Plug 'prettier/vim-prettier', {
+"  \ 'do': 'npm install',
+"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'html'] }
+
+" Language specific plugins
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
+Plug 'mattn/emmet-vim',                  { 'for': ['html', 'css', 'html.handlebars', 'vue'] }
+Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
+"Plug 'mxw/vim-jsx',                      { 'for': 'jsx' }
+Plug 'posva/vim-vue',                    { 'for': 'vue' }
+Plug 'bfrg/vim-cpp-modern',              { 'for': 'cpp' }
+Plug 'vim-jp/vim-cpp',                   { 'for': 'cpp' }
+"Plug 'rhysd/vim-clang-format',           { 'for': ['c', 'cpp'] }
+Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
-
 Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
+Plug 'zah/nim.vim'
 
+" Themes
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
-
+Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'yuttie/inkstained-vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'endel/vim-github-colorscheme'
+Plug 'mhartington/oceanic-next'
 Plug 'lifepillar/vim-solarized8'
-Plug 'junegunn/seoul256.vim'
-Plug 'nanotech/jellybeans.vim' "Kind of does not work with true color
+Plug 'chiendo97/intellij.vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'macguirerintoul/night_owl_light.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -65,13 +91,27 @@ filetype plugin indent on
 " End Vim-Plug
 "------------------------------------------------------------------------------
 
-colorscheme one
-set background=light
+colorscheme night-owl
+let g:airline_theme = 'ayu'
+"colorscheme nord
+"let ayucolor="dark"
+"colorscheme ayu
+"set background=light
+"let g:one_allow_italics=1
+"colorscheme one
+"let g:oceanic_next_terminal_bold=0
+"let g:oceanic_next_terminal_italic=1
+"colorscheme OceanicNext
+
+    
 
 "indentLine
 let g:indentLine_char = '·'
-let g:indentLine_color_gui = '#d0d0d0'
-"let g:indentLine_color_gui = '#585858'
+let g:indentLine_color_gui = '#444444'
+let g:indentLine_enabled = 0
+let g:vim_json_syntax_conceal = 0
+imap <Leader>i :IndentLinesToggle<cr>
+nmap <Leader>i :IndentLinesToggle<cr>
 
 "Airline
 if !exists('g:airline_symbols')
@@ -79,9 +119,13 @@ if !exists('g:airline_symbols')
 endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_symbols.branch = '⎇'
+
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 "mycpp
 nmap <Leader><Leader>f :call ShowFuncName() <CR>
@@ -91,13 +135,30 @@ nmap <silent><Leader>ot :call FindFileAndSplit('e')<CR>
 " ctrlp
 nnoremap <silent> <Leader>os :CtrlP<CR>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|build$\|deps$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.dll$|\.exe$',
   \ 'jclass': '\v\.(class)$',
   \ }
 
-" NerdTree
-nnoremap <silent> <Leader>oe :NERDTreeToggle<CR>
+" clang format
+"let g:clang_format#auto_format=1
+
+"vim-go
+let g:go_imports_autosave = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_imports_mode = "goimports"
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
 
 
 " Disable annoying screen flashing
@@ -116,7 +177,9 @@ set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
-"autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+"autocmd Filetype cpp setlocal ts=4 sts=4 sw=4
+"autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+"autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
 
 autocmd BufNewFile,BufRead *.mat set filetype=yaml
 
@@ -148,6 +211,17 @@ map <Leader>2 :tabprevious<cr>
 
 " jj back to normal mode ('Control + c' works too)
 inoremap jj <Esc>
+inoremap <C-c> <Esc>
+
+" ctrl + p to paste 'yanked' content in edit mode
+imap <C-p> <C-r>"
+
+" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "------------------------------------------------------------------------------
 "Auto-complete by tab
@@ -171,6 +245,15 @@ set complete+=t "tags
 "------------------------------------------------------------------------------
 " End auto-complete by tab
 "------------------------------------------------------------------------------
+
+" I would prefer emmet-vim on tab completion working with the tab completion
+" above but... This is the less painful method to remap it to something else.
+"imap ,, <C-y>,
+imap <C-l> <C-y>,
+
+" Buffergator (to replace that tab workflow)
+nmap <C-b> :BuffergatorOpen<CR>
+let g:buffergator_show_full_directory_path = 0
 
 
 " Run interpretators in the ConqueTerm depending on the filetype

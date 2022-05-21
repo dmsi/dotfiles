@@ -40,8 +40,25 @@ function install_nvim() {
 # .bashrc .screenrc etc 
 #------------------------------------------------------------------------------
 function install_shell() {
-  cp .screenrc ~/.
-  cat .bashrc >> ~/.bashrc
+  # .screenrc
+  ln -sf ${SCRIPTPATH}/.screenrc ../.screenrc
+
+  # .ls_colors
+  ln -sf ${SCRIPTPATH}/.ls_colors ../.ls_colors
+
+  # .bashrc
+  mv ~/.bashrc ~/.bashrc.backup
+  cat << EOF > ~/.bashrc
+$(cat ~/.bashrc.backup | sed '/# begin: dotfiles ---/,/# end: dotfiles ---/d')
+$(cat ${SCRIPTPATH}/.bashrc)
+EOF
+  # Remove double empty lines
+  sed '
+      N;
+      /^\n$/d;
+      P;
+      D
+  ' -i ~/.bashrc
 }
 
 #------------------------------------------------------------------------------

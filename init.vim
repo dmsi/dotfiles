@@ -36,7 +36,7 @@ set encoding=utf-8
 "------------------------------------------------------------------------------
 " Vim-Plug
 "------------------------------------------------------------------------------
-set nocompatible 
+set nocompatible
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
@@ -50,9 +50,9 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'jeetsukumaran/vim-buffergator'
 
-"Plug 'prettier/vim-prettier', {
-"  \ 'do': 'npm install',
-"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'html'] }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'html'] }
 
 " Language specific plugins
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
@@ -79,11 +79,18 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'yuttie/inkstained-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'mhartington/oceanic-next'
+"Plug 'mhartington/oceanic-next'
 Plug 'lifepillar/vim-solarized8'
 Plug 'chiendo97/intellij.vim'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'macguirerintoul/night_owl_light.vim'
+Plug 'davidosomething/vim-colors-meh'
+Plug 'sainnhe/everforest'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'savq/melange'
+Plug 'folke/tokyonight.nvim'
+Plug 'adrian5/oceanic-next-vim'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 filetype plugin indent on
@@ -91,9 +98,34 @@ filetype plugin indent on
 " End Vim-Plug
 "------------------------------------------------------------------------------
 
-colorscheme night-owl
-let g:airline_theme = 'ayu'
+let g:is_bash = 1
+let ayucolor="mirage"
+
+"-- oceanicnext
+"let g:oceanic_next_terminal_italic = 1
+"let g:oceanic_next_terminal_bold = 0
+"colorscheme OceanicNext
+
+let g:oceanic_bold = 0
+let g:oceanic_italic_comments = 1
+"colorscheme oceanicnext
+
+"-- everforest
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+colorscheme everforest
+
+"-- nightfox
+"colorscheme nightfox
+"let g:airline_theme = 'everforest'
+
+
+"colorscheme night-owl
+"let g:airline_theme = 'ayu'
+
+
 "colorscheme nord
+
 "let ayucolor="dark"
 "colorscheme ayu
 "set background=light
@@ -103,10 +135,10 @@ let g:airline_theme = 'ayu'
 "let g:oceanic_next_terminal_italic=1
 "colorscheme OceanicNext
 
-    
 
 "indentLine
-let g:indentLine_char = '·'
+"let g:indentLine_char = '·'
+let g:indentLine_char = '¦'
 let g:indentLine_color_gui = '#444444'
 let g:indentLine_enabled = 0
 let g:vim_json_syntax_conceal = 0
@@ -177,7 +209,7 @@ set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=4 sts=4 sw=4
-"autocmd Filetype cpp setlocal ts=4 sts=4 sw=4
+autocmd Filetype cpp setlocal ts=4 sts=4 sw=4
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 "autocmd Filetype html,css setlocal ts=4 sts=4 sw=4
 
@@ -191,18 +223,19 @@ set nohidden   " When I close a tab I want to remove the buffer
 set nowrap     " Disable lines wrapping
 set backup     " Create backup files (filename~)
 set autoindent " Autoindent (depends on file's type)
-set sidescroll=5 " 
-set listchars+=precedes:<,extends:> " 
-set ignorecase " 
-set incsearch  " 
-set hlsearch   " 
+set sidescroll=5 "
+set listchars+=precedes:<,extends:> "
+set ignorecase "
+set incsearch  "
+set hlsearch   "
 
-" Set status line status 
+" Set status line status
 set wildmenu
 set laststatus=2
 
 " Dont jump when * is pressed for the first time, just highlight all
 nnoremap * *N
+
 
 " Tab navigation
 map <Leader>3 :tabnext<cr>
@@ -213,8 +246,6 @@ map <Leader>2 :tabprevious<cr>
 inoremap jj <Esc>
 inoremap <C-c> <Esc>
 
-" ctrl + p to paste 'yanked' content in edit mode
-imap <C-p> <C-r>"
 
 " EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -237,7 +268,7 @@ endfunction
 imap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Set autocompleteon from
-set complete="" 
+set complete=""
 set complete+=. "current buffer
 set complete+=k "dictonary
 set complete+=b "other buffers
@@ -254,10 +285,3 @@ imap <C-l> <C-y>,
 " Buffergator (to replace that tab workflow)
 nmap <C-b> :BuffergatorOpen<CR>
 let g:buffergator_show_full_directory_path = 0
-
-
-" Run interpretators in the ConqueTerm depending on the filetype
-augroup CExecute 
-  autocmd!
-  autocmd FileType python nnoremap <buffer> <Leader>or :exe "ConqueTermSplit python -i " . expand("%")<cr>
-augroup END

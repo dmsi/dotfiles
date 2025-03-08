@@ -1,5 +1,8 @@
 syntax on
 
+" The most annoying thing ever
+set mouse=
+
 " Read more
 " https://medium.com/@alexeysamoshkin/if-you-redefine-emmet-trigger-key-from-default-c-y-to-comma-in-insert-mode-wouldnt-it-mean-acb9eef59b50
 "set notimeout
@@ -40,7 +43,7 @@ set nocompatible
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim',                   { 'on': 'CtrlP' }
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
 
 Plug 'vim-scripts/vcscommand.vim'
@@ -66,7 +69,6 @@ Plug 'vim-jp/vim-cpp',                   { 'for': 'cpp' }
 Plug 'fatih/vim-go',                     { 'do': ':GoUpdateBinaries' }
 Plug 'derekwyatt/vim-scala',             { 'for': 'scala' }
 Plug 'tikhomirov/vim-glsl',              { 'for': 'glsl' }
-Plug 'dmsi/mycpp.vim',                   { 'for': ['c', 'cpp'] }
 Plug 'zah/nim.vim'
 
 " Themes
@@ -91,6 +93,10 @@ Plug 'savq/melange'
 Plug 'folke/tokyonight.nvim'
 Plug 'adrian5/oceanic-next-vim'
 Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'xiyaowong/transparent.nvim'
+
+Plug 'jdonaldson/vaxe'
 call plug#end()
 
 filetype plugin indent on
@@ -113,7 +119,7 @@ let g:oceanic_italic_comments = 1
 "-- everforest
 let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
-colorscheme everforest
+"colorscheme everforest
 
 "-- nightfox
 "colorscheme nightfox
@@ -122,6 +128,11 @@ colorscheme everforest
 
 "colorscheme night-owl
 "let g:airline_theme = 'ayu'
+"
+
+"colorscheme sorbet
+"let g:airline_theme = 'github'
+colorscheme nord
 
 
 "colorscheme nord

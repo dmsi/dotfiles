@@ -65,4 +65,4 @@ EOF
 # Call functions to install components
 #------------------------------------------------------------------------------
 install_nvim
-install_shell
+#install_shell
